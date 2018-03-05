@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Palindrome {
+
+    public static void main(String[] args) {
+
+        // --- For input from user
+        Scanner input = new Scanner(System.in);
+
+        String s, rev = "";
+        System.out.println("Enter a String: ");
+
+        s = input.nextLine();  // input from user
+
+        int len = s.length();   // find the length
+
+        // find the reverse string
+        for (int i = len - 1; i >= 0; i--) {
+
+            rev += s.charAt(i);
+        }
+
+        // check if both are equal or not
+        if (s.equals(rev)) {
+            System.out.println("This String is Palindrome");
+        } else {
+            System.out.println("This is not Palindrome");
+
+        }
+
+    }
+}
