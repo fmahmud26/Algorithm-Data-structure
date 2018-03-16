@@ -1,0 +1,48 @@
+
+
+import java.io.*;
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        File myFile = new File("myFile.txt");
+
+        // create the file
+        try {
+            myFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // write something into the file
+        try {
+            FileWriter fileWriter = new FileWriter(myFile);
+
+            fileWriter.write("Name: Salman Khan\nAge: 52\nAddress: Mumbai\n\n");
+            fileWriter.flush();
+            fileWriter.close();
+            System.out.println("File writing completed");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // read from the file
+        try {
+            FileReader fileReader = new FileReader(myFile);
+
+            char[] data = new char[100];
+
+            fileReader.read(data);
+            String sb = new String(data);
+            
+            System.out.println(sb.trim());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
