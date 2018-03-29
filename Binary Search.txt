@@ -1,0 +1,88 @@
+package search_algorithm;
+
+import java.util.Scanner;
+
+
+public class BinarySearchAlgorithm {
+
+    private static Scanner input = new Scanner(System.in);
+
+
+    public static void main(String[] args) {
+
+
+        System.out.print("Enter array size: ");
+        int size = input.nextInt();
+
+        System.out.println("Enter " + size + " elements: ");
+        int[] list = new int[size];
+
+        // input all the items into the array
+        for (int i = 0; i < size; i++) {
+
+            list[i] = input.nextInt();
+        }
+
+        // for binary search, we need to sort the array
+        // here, we sort the array in ascending order
+        for (int i = 0; i < size; i++) {
+
+            int temp;
+
+            for (int j = i + 1; j < size; j++) {
+
+                if (list[i] > list[j]) {
+
+                    temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                }
+
+            }
+        }
+
+        System.out.print("\n\nEnter the value you want to find: ");
+        int search = input.nextInt();
+
+
+        int position = binary_search(list, search);
+
+        if (position == -1) {
+
+            System.out.println("Item " + search + " not found");
+
+        } else {
+
+            System.out.println("Item " + search + " found at " + position + " index");
+        }
+
+    }
+
+    // this method return the index of sorted array where item is found
+    private static int binary_search(int[] list, int search) {
+
+        int lower = 0, upper = list.length - 1, mid;
+
+
+        while (upper >= lower) {
+
+            mid = (lower + upper) / 2;  // take integer mid point
+
+            if (list[mid] < search) {
+
+                lower = mid + 1;
+            }
+
+            if (list[mid] > search) {
+
+                upper = mid - 1;
+            }
+
+            if (list[mid] == search) {
+                return mid;
+            }
+        }
+
+        return -1;
+    }
+}
