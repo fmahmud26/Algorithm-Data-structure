@@ -1,0 +1,60 @@
+package search_algorithm;
+
+import java.util.Scanner;
+
+public class LinearSearchAlgorithm {
+
+    private static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        int size, item;
+
+        System.out.print("Enter the array size: ");
+        size = input.nextInt();
+
+        int[] list = new int[size];
+
+        System.out.println("Enter " + size + " Elements: ");
+
+        for (int i = 0; i < size; i++) {
+
+            list[i] = input.nextInt();
+        }
+
+        System.out.print("\n\nEnter the value you want to find: ");
+        item = input.nextInt();
+
+        int position = LinearSearch(list, item);
+
+
+        if (position == -1) {
+
+            System.out.println("The item " + item + " not found the list");
+        } else {
+            System.out.println("The item " + item + " found at index " + position + " .");
+        }
+    }
+
+
+    private static int LinearSearch(int[] list, int item) {
+
+        int size = list.length - 1;
+
+        for (int i = 0; i <= size; i++) {
+
+            if (i > size) {
+                return -1;
+            }
+
+            if (list[i] == item) {
+                return i;
+            } else {
+                i++;
+            }
+
+        }
+
+        return -1;
+    }
+}
